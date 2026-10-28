@@ -1,26 +1,42 @@
-/* 1. Reset Dasar */
+
+/* =========================================
+   KOPI BANUA — WARM YELLOW EDITION
+========================================= */
+
+/* 1. RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 2. Variabel Merek */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
 :root {
     --utama: #f95738;
     --aksen: #ee964b;
     --teks: #0d3b66;
-    --latar: #faf0ca;
-    --kartu: #f4d35e;
-    --radius: 12px;
+    --latar: #fff5cf;
+    --kartu: #ffdc68;
+    --radius: 16px;
     --jarak: 1.25rem;
+
+    --putih: #fffdf7;
+    --kuning-muda: #fff9e8;
+    --kuning-gelap: #f2c94c;
+    --teks-redup: #657080;
+    --cokelat: #593b27;
+    --bayangan: 0 8px 24px rgba(91, 67, 30, 0.10);
 }
 
-/* Tipografi dan Latar */
+/* 2. DASAR */
 body {
     font-family: "Inter", Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.65;
+    font-size: 16px;
+    line-height: 1.7;
     color: var(--teks);
     background: var(--latar);
 }
@@ -29,79 +45,543 @@ h1,
 h2,
 h3 {
     font-family: "Poppins", Arial, sans-serif;
-    line-height: 1.25;
+    line-height: 1.3;
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
     color: var(--utama);
 }
 
 h2 {
-    font-size: 1.75rem;
-    margin-bottom: var(--jarak);
+    margin-bottom: 1rem;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    color: var(--teks);
 }
 
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 var(--jarak);
-}
-
-section {
-    padding: 2rem 0;
-}
-
-/* 4. Kartu Menu */
-.kartu-menu {
-    background: var(--kartu);
-    border-radius: var(--radius);
-    padding: var(--jarak);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: var(--jarak);
-}
-
-.kartu-menu img {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.kartu-menu h3 {
-    margin: 0.75rem 0 0.25rem;
-}
-
-.harga {
-    color: var(--aksen);
-    font-weight: 700;
+h3 {
+    margin-bottom: 0.6rem;
     font-size: 1.15rem;
 }
 
-/* 5. Form */
+p {
+    margin-bottom: 0.8rem;
+}
+
+img,
+video,
+iframe {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+main {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+section {
+    padding-top: 4rem;
+    scroll-margin-top: 1rem;
+}
+
+/* 3. HEADER */
+header {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 50px 28px 30px;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #fff0a9,
+        #ffe07b,
+        #ffcf59
+    );
+    border: 1px solid rgba(238, 150, 75, 0.2);
+    border-radius: 26px;
+    box-shadow: var(--bayangan);
+}
+
+header h1 {
+    margin-bottom: 10px;
+    letter-spacing: -1.5px;
+}
+
+header > p {
+    max-width: 620px;
+    margin: 0 auto 24px;
+    color: var(--cokelat);
+    font-size: 1.05rem;
+}
+
+header .logo {
+    width: 145px;
+    height: 145px;
+    object-fit: contain;
+    margin: 0 auto 25px;
+    padding: 8px;
+    background: rgba(255, 253, 247, 0.85);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(91, 67, 30, 0.12);
+}
+
+/* 4. NAVIGASI */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+}
+
+nav a {
+    display: inline-block;
+    padding: 9px 16px;
+    color: var(--teks);
+    background: rgba(255, 253, 247, 0.75);
+    border: 1px solid rgba(13, 59, 102, 0.09);
+    border-radius: 30px;
+    font-size: 0.92rem;
+    font-weight: 650;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: white;
+    background: var(--teks);
+    border-color: var(--teks);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+/* 5. JUDUL KECIL */
+.eyebrow {
+    margin-bottom: 7px;
+    color: var(--utama);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-intro {
+    max-width: 800px;
+    color: var(--teks-redup);
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+
+/* 6. GRID MENU */
+.daftar-menu {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.kartu-menu {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: var(--kartu);
+    border: 1px solid rgba(176, 126, 28, 0.14);
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.kartu-menu:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 32px rgba(91, 67, 30, 0.16);
+}
+
+.kartu-menu > img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--kuning-muda);
+}
+
+.kartu-konten {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.kartu-menu h3 {
+    margin-bottom: 8px;
+    color: var(--cokelat);
+    font-size: 1.1rem;
+}
+
+.kartu-menu p {
+    color: #5d5145;
+    font-size: 0.94rem;
+}
+
+.kartu-menu .harga {
+    margin-bottom: 8px;
+    color: #a84722;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.tombol-pesan {
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 16px;
+    color: white;
+    background: var(--utama);
+    border-radius: 9px;
+    font-size: 0.9rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.tombol-pesan:hover,
+.tombol-pesan:focus-visible {
+    background: #d94328;
+    transform: translateY(-1px);
+    outline: none;
+}
+
+/* 7. PANEL KONTAK */
+.kontak-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.panel {
+    min-width: 0;
+    padding: 26px;
+    background: var(--putih);
+    border: 1px solid #f0e4c8;
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+}
+
+.panel h3 {
+    margin-bottom: 16px;
+}
+
+.jam-buka ul {
+    list-style: none;
+}
+
+.jam-buka li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid #eee8d9;
+}
+
+.jam-buka li:last-child {
+    border-bottom: none;
+}
+
+.hari {
+    font-weight: 700;
+}
+
+.jam {
+    color: var(--teks-redup);
+    text-align: right;
+}
+
+.info-kontak p {
+    overflow-wrap: anywhere;
+}
+
+.info-kontak strong {
+    color: var(--teks);
+}
+
+/* 8. GALERI */
+.galeri-foto {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    align-items: start;
+}
+
+.galeri-foto figure {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--putih);
+    border: 1px solid #f0e4c8;
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+    transition: transform 0.2s ease;
+}
+
+.galeri-foto figure:hover {
+    transform: translateY(-3px);
+}
+
+.galeri-foto img,
+.galeri-foto video {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    background: var(--cokelat);
+}
+
+.galeri-foto figcaption {
+    padding: 14px 16px;
+    color: var(--teks-redup);
+    font-size: 0.92rem;
+}
+
+/* 9. PETA */
+.peta-lokasi {
+    margin-top: 26px;
+    overflow: hidden;
+    background: var(--putih);
+    border: 1px solid #f0e4c8;
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+}
+
+.peta-lokasi h3 {
+    padding: 20px 22px 0;
+}
+
+.peta-lokasi iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+}
+
+/* 10. FORM PEMESANAN */
+#form-pemesanan {
+    max-width: 760px;
+    padding: 30px;
+    background: var(--putih);
+    border: 1px solid #f0e4c8;
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+}
+
+.form-hint {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    color: var(--cokelat);
+    background: #fff4ce;
+    border-left: 4px solid var(--aksen);
+    border-radius: 7px;
+    font-size: 0.93rem;
+}
+
 label {
     display: block;
-    margin-top: 1rem;
-    font-weight: 600;
+    margin: 17px 0 6px;
+    color: var(--teks);
+    font-weight: 700;
 }
 
 input,
 select,
 textarea {
+    display: block;
     width: 100%;
-    padding: 0.7rem;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--teks);
+    background: #fffefb;
+    border: 1px solid #d9d3c3;
+    border-radius: 9px;
     font-family: inherit;
     font-size: 1rem;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--aksen);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(238, 150, 75, 0.18);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
 button {
-    background: var(--aksen);
-    color: #fff;
+    display: inline-block;
+    margin-top: 22px;
+    padding: 13px 20px;
+    color: white;
+    background: var(--utama);
     border: none;
-    padding: 0.85rem 1.75rem;
-    border-radius: 8px;
+    border-radius: 9px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 750;
     cursor: pointer;
-    margin-top: 1.25rem;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: #d94328;
+    transform: translateY(-1px);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(249, 87, 56, 0.3);
+    outline-offset: 3px;
+}
+
+.status-form {
+    margin-top: 15px;
+    overflow-wrap: anywhere;
+}
+
+.status-form:empty {
+    display: none;
+}
+
+/* 11. FOOTER */
+footer {
+    margin-top: 70px;
+    padding: 30px 20px;
+    color: var(--putih);
+    background: var(--cokelat);
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+    color: #f1dfc5;
+}
+
+/* 12. TABLET */
+@media (max-width: 900px) {
+    .daftar-menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .galeri-foto {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .galeri-foto figure:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* 13. PONSEL */
+@media (max-width: 600px) {
+    main {
+        width: calc(100% - 24px);
+    }
+
+    header {
+        margin-top: 12px;
+        padding: 30px 16px 22px;
+        border-radius: 18px;
+    }
+
+    header .logo {
+        width: 115px;
+        height: 115px;
+    }
+
+    nav ul {
+        gap: 7px;
+    }
+
+    nav a {
+        padding: 8px 11px;
+        font-size: 0.82rem;
+    }
+
+    section {
+        padding-top: 2.8rem;
+    }
+
+    .daftar-menu,
+    .kontak-wrapper,
+    .galeri-foto {
+        grid-template-columns: 1fr;
+    }
+
+    .galeri-foto figure:last-child {
+        grid-column: auto;
+    }
+
+    .kartu-konten {
+        padding: 17px;
+    }
+
+    .galeri-foto img,
+    .galeri-foto video {
+        height: 230px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .jam-buka li {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .jam {
+        text-align: left;
+    }
+
+    #form-pemesanan {
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* 14. AKSESIBILITAS */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
 }
