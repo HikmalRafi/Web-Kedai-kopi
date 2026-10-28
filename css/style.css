@@ -1,0 +1,107 @@
+/* 1. Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Variabel Merek */
+:root {
+    --utama: #f95738;
+    --aksen: #ee964b;
+    --teks: #0d3b66;
+    --latar: #faf0ca;
+    --kartu: #f4d35e;
+    --radius: 12px;
+    --jarak: 1.25rem;
+}
+
+/* Tipografi dan Latar */
+body {
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--teks);
+    background: var(--latar);
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Poppins", Arial, sans-serif;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--utama);
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--jarak);
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--jarak);
+}
+
+section {
+    padding: 2rem 0;
+}
+
+/* 4. Kartu Menu */
+.kartu-menu {
+    background: var(--kartu);
+    border-radius: var(--radius);
+    padding: var(--jarak);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: var(--jarak);
+}
+
+.kartu-menu img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.kartu-menu h3 {
+    margin: 0.75rem 0 0.25rem;
+}
+
+.harga {
+    color: var(--aksen);
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+/* 5. Form */
+label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+button {
+    background: var(--aksen);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.75rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.25rem;
+}
