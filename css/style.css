@@ -1355,3 +1355,168 @@ section[id] {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* CHECKOUT SUMMARY — KOPI BANUA */
+
+.order-summary {
+  width: 100%;
+  margin-top: 24px;
+  padding: 24px;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: 0 12px 35px rgba(41, 27, 19, .07);
+}
+
+.summary-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-eyebrow {
+  margin-bottom: 5px;
+  color: var(--gold-dark);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.summary-header h3 {
+  margin: 0;
+  color: var(--coffee);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 25px;
+}
+
+.order-status {
+  display: inline-block;
+  padding: 7px 10px;
+  color: #805d15;
+  border-radius: 20px;
+  background: #fbf0d3;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.summary-order-id {
+  display: grid;
+  gap: 4px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-order-id span,
+.summary-price span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.summary-order-id strong {
+  color: var(--coffee);
+  font-size: 12px;
+}
+
+.summary-details {
+  display: grid;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.summary-product {
+  display: grid;
+  gap: 5px;
+}
+
+.summary-product strong {
+  color: var(--coffee);
+  font-size: 14px;
+}
+
+.summary-product span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.summary-price {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.summary-price strong {
+  color: var(--coffee);
+  font-size: 12px;
+}
+
+.summary-total {
+  display: flex;
+  padding: 18px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #f0dfb5;
+  border-radius: 9px;
+  background: #fcf5e6;
+}
+
+.summary-total span {
+  color: var(--coffee);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.summary-total strong {
+  color: var(--coffee);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.summary-customer {
+  padding: 17px 0 5px;
+}
+
+.summary-customer p {
+  margin-bottom: 8px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.summary-whatsapp {
+  width: 100%;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.summary-disclaimer {
+  margin: 13px 0 0;
+  font-size: 10px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .order-summary {
+    padding: 18px;
+  }
+
+  .summary-header {
+    flex-direction: column;
+  }
+
+  .summary-total {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .summary-total strong {
+    font-size: 23px;
+  }
+}

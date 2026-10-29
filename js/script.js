@@ -148,94 +148,137 @@
     );
   }
 
-  function buildSummary(order, statusElement) {
-    statusElement.replaceChildren();
 
-    const summary = makeElement("div", "order-summary");
-    const heading = makeElement("h3", "", "Ringkasan Pesanan");
-    const id = makeElement("p", "", `ID Pesanan: ${order.id}`);
-    const name = makeElement("p", "", `Nama: ${order.customer.name}`);
-    const phone = makeElement(
-      "p",
-      "",
-      `WhatsApp: ${order.customer.phone}`
-    );
-    const product = makeElement(
-      "p",
-      "",
-      `Menu: ${order.item.name} × ${order.item.quantity}`
-    );
-    const unitPrice = makeElement(
-      "p",
-      "",
-      `Harga satuan: ${formatRupiah(order.item.unitPrice)}`
-    );
-    const total = makeElement(
-      "p",
-      "order-total",
-      `Total: ${formatRupiah(order.total)}`
-    );
-    const note = makeElement(
-      "p",
-      "",
-      `Catatan: ${order.note || "-"}`
-    );
-    const orderStatus = makeElement(
-      "p",
-      "",
-      "Status: Menunggu konfirmasi kedai"
-    );
+function buildSummary(order, statusElement) {
+  statusElement.replaceChildren();
 
-    const waButton = makeElement(
-      "a",
-      "btn btn-primary",
-      "Lanjutkan ke WhatsApp"
-    );
+  const summary = document.createElement("div");
+  summary.className = "order-summary";
 
-    const message = [
-      `Halo ${DATA.app.name}! Saya ingin memesan.`,
-      "",
-      `ID Pesanan: ${order.id}`,
-      `Nama: ${order.customer.name}`,
-      `Nomor WhatsApp: ${order.customer.phone}`,
-      "",
-      `Menu: ${order.item.name}`,
-      `Harga satuan: ${formatRupiah(order.item.unitPrice)}`,
-      `Jumlah: ${order.item.quantity}`,
-      `Total: ${formatRupiah(order.total)}`,
-      `Catatan: ${order.note || "-"}`,
-      "",
-      "Mohon konfirmasi ketersediaan dan pesanan saya.",
-      "Terima kasih!"
-    ].join("\n");
+  const header = document.createElement("div");
+  header.className = "summary-header";
 
-    waButton.href =
-      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
-    waButton.target = "_blank";
-    waButton.rel = "noopener noreferrer";
+  const headingGroup = document.createElement("div");
 
-    const disclaimer = makeElement(
-      "p",
-      "form-footnote",
-      "Pesanan belum dikonfirmasi. Kirim pesan melalui WhatsApp dan tunggu balasan kedai."
-    );
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "summary-eyebrow";
+  eyebrow.textContent = "KOPI BANUA · ORDER";
 
-    summary.append(
-      heading,
-      id,
-      name,
-      phone,
-      product,
-      unitPrice,
-      total,
-      note,
-      orderStatus,
-      waButton,
-      disclaimer
-    );
+  const heading = document.createElement("h3");
+  heading.textContent = "Pesananmu";
 
-    statusElement.appendChild(summary);
-  }
+  headingGroup.append(eyebrow, heading);
+
+  const badge = document.createElement("span");
+  badge.className = "order-status";
+  badge.textContent = "Menunggu konfirmasi";
+
+  header.append(headingGroup, badge);
+
+  const orderId = document.createElement("div");
+  orderId.className = "summary-order-id";
+
+  const idLabel = document.createElement("span");
+  idLabel.textContent = "ID Pesanan";
+
+  const idValue = document.createElement("strong");
+  idValue.textContent = order.id;
+
+  orderId.append(idLabel, idValue);
+
+  const details = document.createElement("div");
+  details.className = "summary-details";
+
+  const product = document.createElement("div");
+  product.className = "summary-product";
+
+  const productName = document.createElement("strong");
+  productName.textContent = order.item.name;
+
+  const productQuantity = document.createElement("span");
+  productQuantity.textContent = `Jumlah: ${order.item.quantity}`;
+
+  product.append(productName, productQuantity);
+
+  const price = document.createElement("div");
+  price.className = "summary-price";
+
+  const unitPrice = document.createElement("span");
+  unitPrice.textContent = "Harga satuan";
+
+  const unitPriceValue = document.createElement("strong");
+  unitPriceValue.textContent = formatRupiah(order.item.unitPrice);
+
+  price.append(unitPrice, unitPriceValue);
+
+  const total = document.createElement("div");
+  total.className = "summary-total";
+
+  const totalLabel = document.createElement("span");
+  totalLabel.textContent = "Total pembayaran";
+
+  const totalValue = document.createElement("strong");
+  totalValue.textContent = formatRupiah(order.total);
+
+  total.append(totalLabel, totalValue);
+
+  const customer = document.createElement("div");
+  customer.className = "summary-customer";
+
+  const customerName = document.createElement("p");
+  customerName.textContent = `Nama: ${order.customer.name}`;
+
+  const customerPhone = document.createElement("p");
+  customerPhone.textContent = `WhatsApp: ${order.customer.phone}`;
+
+  const customerNote = document.createElement("p");
+  customerNote.textContent = `Catatan: ${order.note || "-"}`;
+
+  customer.append(customerName, customerPhone, customerNote);
+
+  const message = [
+    `Halo ${DATA.app.name}! Saya ingin memesan.`,
+    "",
+    `ID Pesanan: ${order.id}`,
+    `Nama: ${order.customer.name}`,
+    `Nomor WhatsApp: ${order.customer.phone}`,
+    `Menu: ${order.item.name}`,
+    `Harga satuan: ${formatRupiah(order.item.unitPrice)}`,
+    `Jumlah: ${order.item.quantity}`,
+    `Total: ${formatRupiah(order.total)}`,
+    `Catatan: ${order.note || "-"}`,
+    "",
+    "Mohon konfirmasi pesanan saya. Terima kasih!"
+  ].join("\n");
+
+  const waButton = document.createElement("a");
+  waButton.className = "btn btn-primary summary-whatsapp";
+  waButton.href =
+    `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+  waButton.target = "_blank";
+  waButton.rel = "noopener noreferrer";
+  waButton.textContent = "Konfirmasi melalui WhatsApp →";
+
+  const disclaimer = document.createElement("p");
+  disclaimer.className = "summary-disclaimer";
+  disclaimer.textContent =
+    "Pesanan belum dikonfirmasi oleh kedai. Silakan lanjutkan ke WhatsApp untuk mengirim detail pesanan.";
+
+  details.append(product, price);
+
+  summary.append(
+    header,
+    orderId,
+    details,
+    total,
+    customer,
+    waButton,
+    disclaimer
+  );
+
+  statusElement.appendChild(summary);
+}
+
 
   function initializeMenuButtons() {
     document.querySelectorAll("[data-menu]").forEach((button) => {
